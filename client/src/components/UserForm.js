@@ -3,6 +3,8 @@ import ContactInfo from "./ContactInfo";
 import Experience from "./Experience";
 import Education from "./Education";
 import Skills from "./Skills";
+import axios from 'axios';
+import { saveAs } from 'file-saver';
 
 export default class UserForm extends Component {
 
@@ -44,6 +46,18 @@ export default class UserForm extends Component {
         this.setState({
             step : step - 1
         })
+    };
+
+    downloadResume = () => {
+        const data = this.state;
+        axios.post('/resume', data)
+            .then(() => axios.get('/resume', { responseType: 'blob' }))
+            .then((res) => {
+                saveAs(
+                    new Blob([res.data], { type: 'application/pdf' }),
+                    'ResumeOutput.pdf'
+                );
+            });
     };
 
     handleChange = input => event => {
@@ -103,7 +117,7 @@ export default class UserForm extends Component {
             case 4:
                 return <Skills
                     prevStep={this.prevStep}
-                    nextStep={this.nextStep}
+                    nextStep={this.downloadResume}
                     handleChange = {this.handleChange}
                     handleInputChange={this.handleInputChange}
                     handleKeyDown={this.handleKeyDown}

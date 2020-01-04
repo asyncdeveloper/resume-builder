@@ -29,7 +29,7 @@ function Skills(props) {
             />
             <div className="loginhere">
                 <button className="loginhere-link" onClick={prevStep}>Previous</button>
-                <button className="loginhere-link" onClick={nextStep}>Next</button>
+                <button className="loginhere-link" onClick={nextStep}>Download Resume</button>
             </div>
         </React.Fragment>
 
