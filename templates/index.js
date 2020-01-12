@@ -3,9 +3,10 @@ module.exports = ({
       jobTitle, jobCompany , jobStart , jobEnd, JobDesc ,
       institution , qualification , startDate , endDate ,
       skills }) => {
-        let skillsContent = null;
+        let skillsContent = '';
         for(let item of skills) {
-            skillsContent+= `<li>${item}</li>`;
+            if (item.value != null)
+                skillsContent+= `<li>${item.value}</li>`;
         }
     return `
        <!DOCTYPE html>
@@ -455,8 +456,7 @@ module.exports = ({
                 
                 </article>
                 </div>
-                <div class="clear"></div>
-                </section>
+                
                 </div>
                 </div>
             </body>
