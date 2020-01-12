@@ -11,8 +11,9 @@ export default class UserForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            step: 4,
+            step: 1,
             name: '',
+            email: '',
             phone: '',
             country: '',
             city: '',
@@ -57,6 +58,7 @@ export default class UserForm extends Component {
                     new Blob([res.data], { type: 'application/pdf' }),
                     'ResumeOutput.pdf'
                 );
+                this.nextStep();
             });
     };
 

@@ -19,6 +19,7 @@ app.get('/resume', (req, res) => {
 
 //POST Resume Route
 app.post('/resume', (req, res) => {
+    console.log(req.body);
     pdf.create(template(req.body), {}).toFile('ResumeOutput.pdf', (err) => {
         if(err){
             res.send(err.measure);
