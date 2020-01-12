@@ -62,8 +62,8 @@ export default class UserForm extends Component {
             });
     };
 
-    handleChange = input => event => {
-        this.setState({ [input] : event.target.value })
+    handleChange = event => {
+        this.setState({ [event.target.name] : event.target.value })
     };
 
     createOption = (label) => ({
